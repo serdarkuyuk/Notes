@@ -1,5 +1,7 @@
-##Comparision of BDS and BFS
-in qeue and stack structure as well as recursion
+#Comparision of BDS and BFS
+
+
+In qeue and stack structure as well as recursion
 
 
 
