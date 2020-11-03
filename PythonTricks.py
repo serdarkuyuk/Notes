@@ -11,4 +11,35 @@ for num in nums:                    #first run
         res[idx] = num
 
 print(len(res))
+
+# or put the first number into list
+result = [nums[0]]
+for num in nums[1:]:
+    if num > result[-1]:
+        result.append(num)
+    else:
+        index = bisect_left(result, num)
+        result[index] = num
+
+return len(result)
+```
+
+#Two pointer example2
+
+```python
+g = [10,9,8,7]
+s = [5,6,7,8]
+
+g.sort()
+s.sort()
+
+i = j = 0
+satisfied = 0
+while i < len(g) and j < len(s):
+    if g[i] <= s[j]:
+        satisfied += 1
+        j += 1
+        i += 1
+    else:
+        j += 1
 ```
