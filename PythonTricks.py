@@ -43,3 +43,17 @@ while i < len(g) and j < len(s):
     else:
         j += 1
 ```
+
+#Creating dictinary with list value
+
+```python
+pieces = [[78],[4,64],[91]]
+myDictionary = {x[0]:x for x in pieces}
+```
+
+#Dictionary key value empty
+get value from dictionary by asking key value, return empty list if there is no key value
+
+'''python
+myDictionary.get(i, [])
+'''
