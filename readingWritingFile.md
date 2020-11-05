@@ -1,5 +1,6 @@
 #Writing and reading
 
+EOF end of file  character
 
 ```python
 
@@ -11,13 +12,17 @@ close(input)
 ```
 
 ```python
-fasta_file = "name.fasta"
+fasta_file = "/user/serdar/Documents/udel/courses/binf690/hw4/contigs.fasta"
 fastq_file = "name.fastq"
 output = "out.fasta"
 
 with open(fileName, 'r') as input, open(output, 'w') as output:
   pass
 
-#no need to close(name) statment
+#no need to close(name) statement
+
+input.seek(0,0)
+input.readline()
+
 
 ```

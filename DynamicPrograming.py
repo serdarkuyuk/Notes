@@ -1,6 +1,6 @@
 #Dynamic Programming
 
-Longest subsequent subarray
+##Longest subsequent subarray
 Time complexity O(n2)
 Space complexity O(n)
 ```python
@@ -15,3 +15,13 @@ for j in range(1, len(arr)):
         if arr[j] > arr[i]:
             result[j]  = max(result[j], result[i]+1)
 ```
+##Knapsack problem
+
+bottom up  > dynamic Programming
+upto bottom > recursive solution
+
+v = [10, 40, 30, 60]
+w = [5, 4, 6, 3]
+wMax = 10
+
+a b a b d
