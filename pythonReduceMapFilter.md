@@ -1,4 +1,4 @@
-#
+# Map Reduce Filter
 
 
 ![](http://www.globalnerdy.com/wp-content/uploads/2016/06/map-filter-reduce-in-emoji-1.png)
