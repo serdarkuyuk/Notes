@@ -54,6 +54,6 @@ myDictionary = {x[0]:x for x in pieces}
 #Dictionary key value empty
 get value from dictionary by asking key value, return empty list if there is no key value
 
-'''python
-myDictionary.get(i, [])
-'''
+#complemantery
+for i in range(10):
+    print(i, ~i)
