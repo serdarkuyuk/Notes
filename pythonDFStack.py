@@ -19,15 +19,57 @@ root.right.right=TreeNode(9)
       # 1   3    6   9
 # With recursion
 ## in order
-def dfs(node: TreeNode):
-    if not node:
-        return
-    dfs(node.left)
-    values.append(node.val)
-    dfs(node.right)
+# def dfs(node: TreeNode):
+#     if not node:
+#         return
+#     dfs(node.left)
+#     values.append(node.val)
+#     dfs(node.right)
+#
+# dfs(root)
 
-dfs(root)
 
+
+def postorder(root):
+  return  postorder(root.left) + postorder(root.right) + [root.val] if root else []
+print(postorder(root))
+
+def DFS(root):
+    stack = []
+    inorder = []
+    while stack or root:
+        if root:
+            stack.append(root)
+            root = root.left
+        
+        root = stack.pop()
+        inorder.append(root.val)
+        root = root.right
+    return inorder
+print(DFS(root))
+def inorder(root):
+    return inorder(root.left) + [root.val] + inorder(root.right) if root else []
+print(inorder(root))
+# Stack preorder
+def DFS(root):
+    stack = []
+    preorder = []
+    while stack or root:
+        if root:
+            preorder.append(root.val)
+            stack.append(root)
+            root = root.left
+        else:
+            root = stack.pop()
+            root = root.right
+    return preorder
+print(DFS(root))
+
+def preorder(root):
+    return [root.val] + preorder(root.left) + preorder(root.right) if root else []
+print(preorder(root))
+
+'''
 
 # With stack
 ## inorder Shorter version
@@ -43,40 +85,6 @@ def inorder(self, root: TreeNode) -> List:
             root = node.right
     return result
 
-# With stack
-# longer version
-inorder = []
-node = root
-stack = []
-while True:
-    # mylist.append(node)
-    if node:
-        stack.append(node)
-        node = node.left
-    elif stack:
-        node = stack.pop()
-        inorder.append(node.val)
-        node = node.right
-    else:
-        break
-
-print(inorder)
-
-preorder = []
-node = root
-stack = []
-while True:
-    # mylist.append(node)
-    if node:
-        stack.append(node)
-        preorder.append(node.val)
-        node = node.left
-    elif stack:
-        node = stack.pop()
-        node = node.right
-    else:
-        break
-print(preorder)
 
 # Construction of tree from a list
 from collections import deque
@@ -119,3 +127,4 @@ for i in output[1:]:
     current.right = TreeNode(i)
     current = current.right
 return head
+'''

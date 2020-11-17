@@ -4,6 +4,26 @@ to convert number to bin, returns string
 y = 4
 ny = bin(4)
 
+## Counting ones in binary
+```python
+#approach 1, O(logn)
+n=8
+count = 0
+while n:
+    count += (n&1)
+    n >>= 1
+
+#approach 2, O(logn)
+n=8
+count = 0
+while n:
+    n &= (n-1)
+    count += 1
+```
+
+
+
+
 ## Hamming distance Log(n)
 Brian Kernighan's Algorithm
 ```python
