@@ -37,3 +37,25 @@ return False if the numbers are same
 # 110   - 6 result
 ```
 print(2^4)
+##
+
+```python
+print(1&1) #true
+print(1&0) #False
+print(0&1) #False
+print(0&0) #False
+
+print(1|1) #True
+print(1|0) #True
+print(0|1) #True
+print(0|0) #False
+
+print(1^1) #False
+print(1^0) #True
+print(0^1) #True
+print(0^0) #False
+```
+
+```python
+number = (1 << 2 | 1)   #100 + 1  = 5
+```

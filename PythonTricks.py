@@ -57,3 +57,11 @@ get value from dictionary by asking key value, return empty list if there is no 
 #complemantery
 for i in range(10):
     print(i, ~i)
+
+# Iteration a huge list
+```python
+data = [3,5,2,1,4,6,7,8,9,10,11,12,13,14]
+n = iter(data)
+for i in range(8):
+    print(next(n))
+```
