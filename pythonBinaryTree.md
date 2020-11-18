@@ -56,3 +56,9 @@ while stack:
 
 printTree(root)
 ```
+
+# depth of binary tree
+## top-bottom approach
+```python
+
+```
