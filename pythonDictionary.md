@@ -1,5 +1,10 @@
 # setdefault
 
+sorting dictionary by its value
+```Python
+[k for k, v in sorted(mydict.items(),key=lambda x:x[1])]
+```
+
 ```Python
 myDict = {}
 for num in nums:

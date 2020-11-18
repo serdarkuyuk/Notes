@@ -41,10 +41,10 @@ def DFS(root):
         if root:
             stack.append(root)
             root = root.left
-        
-        root = stack.pop()
-        inorder.append(root.val)
-        root = root.right
+        else:
+            root = stack.pop()
+            inorder.append(root.val)
+            root = root.right
     return inorder
 print(DFS(root))
 def inorder(root):
