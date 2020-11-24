@@ -63,7 +63,7 @@ to check docker images
 
 
 
-## Contaiers
+## Containers
 
 Container is running instance of an image
 
@@ -81,13 +81,60 @@ in new terminal, check
 | 404f8f5aaafd | docker101tutorial |"/docker-entrypoint.…"|   2 hours ago| Up 2 hours| 0.0.0.0:80->80/tcp | docker-tutorial |
 |--|--|--|-|-|-|-|-|
 
+### run container
 runs in detached mode
 ```
 docker run -d nginx:latest
 ```
+
+### status container
 gives an id and no need to hanging
 instead
 ```
-docker ps
+docker ps (only running)
+docker ps -a (shows all container not running)
+docker ps -aq (get all container ids)
 ```
 do the same job but much faster
+
+### stop container
+stop only stops it is running it is not removing
+```
+docker stop (containerID)
+docker stop (name)
+```
+
+![](./figure/port.png)
+
+### running container on local host
+```
+docker run -d -p 8080:80 nginx:latest
+```
+from container to local host
+```
+docker run -d -p 3000:80 -p 8080:80 nginx:latest
+```
+
+### help
+```
+docker ps -- help
+```
+
+### delete container
+```
+docker rm (name or id)
+docker rm $(docker ps -aq)  doesn't work if a container is running
+docker rm -f $(docker ps -aq) force to kill process
+```
+
+### giving a name
+```
+docker run --name website -d -p 3000:80 -p 8080:80 nginx:latest
+```
+
+### format
+```
+ "ID\t{{.ID}}\nName\t{{.Names}}\nImage\t{{.Image}}\nPorts\t{{.Ports}}\nCommand\t{{.Command}}\nCreated\t{{.CreatedAt}}\nStatus\t{{.Status}}\n”
+```
+
+## Volumes
