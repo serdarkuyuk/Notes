@@ -1,11 +1,8 @@
-# Docker Instructions
-
-https://hub.docker.com/editions/community/docker-ce-desktop-mac/
-get docker desktop for mac
-~476 mb
-
 Youtube videos
 https://www.youtube.com/watch?v=bhBSlnQcq2k
+
+go this website and install, click, get docker desktop for Mac (stable version)
+>https://hub.docker.com/editions/community/docker-ce-desktop-mac/
 
 Docker is a tool for running Application in an isolated environment
 similar to virtual machine less memory
@@ -48,3 +45,49 @@ says cannot connect to the docker daemon
 
 ## Docker Image
 image is a templete for creating an environment of choice
+snapshot
+has everything need to run your apps
+OS, software, App code
+
+Running instance of an Image
+image -> run container
+
+docker hub is a registery
+
+> docker pull nginx
+Downloaded newer image for nginx:latest
+latest is tag
+
+to check docker images
+> docker images
+
+
+
+## Contaiers
+
+Container is running instance of an image
+
+to run write the name of container and its tag
+> docker run nginx:latest
+
+it is running
+in new terminal, check
+```
+> docker container ls
+```
+|--|--|--|-|-|-|-|-|
+| CONTAINER ID | IMAGE |COMMAND |CREATED |STATUS |PORTS | NAMES |
+| 5251ca9f12eb | nginx:latest | "/docker-entrypoint.…" | About a minute ago |Up About a minute | 80/tcp | vibrant_aryabhata |
+| 404f8f5aaafd | docker101tutorial |"/docker-entrypoint.…"|   2 hours ago| Up 2 hours| 0.0.0.0:80->80/tcp | docker-tutorial |
+|--|--|--|-|-|-|-|-|
+
+runs in detached mode
+```
+docker run -d nginx:latest
+```
+gives an id and no need to hanging
+instead
+```
+docker ps
+```
+do the same job but much faster
