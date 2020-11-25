@@ -23,5 +23,3 @@ upto bottom > recursive solution
 v = [10, 40, 30, 60]
 w = [5, 4, 6, 3]
 wMax = 10
-
-a b a b d
