@@ -49,3 +49,15 @@ SELECT Name,
   THIRDNAME,
   COUNT(*) OVER (PARTITION BY SECONDNAME)
 ```
+
+# subdate
+estime the difference
+> subdate(current_date, 1)
+
+# TO_DAYS
+estimate the days from zero
+> TO_DAYS(t1.recordDate) + 1
+
+# DATEDIFF
+estimate the difference of two times
+DATEDIFF(a.Recorddate,b.Recorddate) = 1
