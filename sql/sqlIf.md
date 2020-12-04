@@ -99,3 +99,14 @@ IF VALUES ARE SAME, IT BEHAVES AS ONE ENTITY
 
 # CHOOSE
 CHOOSE(1,"SMT1", "SMT2")
+
+# GROUP_CONCAT
+
+>SELECT sell_date, COUNT(DISTINCT product) as num_sold,
+    GROUP_CONCAT(DISTINCT product ORDER BY product ASC SEPARATOR ',') AS products
+FROM Activities
+GROUP BY sell_date
+
+# DATE_FORMAT
+
+> DATE_FORMAT(date,'%Y%m')
