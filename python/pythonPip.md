@@ -17,3 +17,19 @@ download virtual environment
 where this environment is installed
 
 > which python
+
+## Leaving the virtual environment
+
+> deactivate
+
+## upgrade PIP
+
+> pip3 install --upgrade pip
+
+## requirement
+
+> pip install -r requirements.txt
+
+## freeze
+
+> pip freeze
