@@ -25,3 +25,6 @@ autocomplete snippet and autocomplete plus
 
 # Editor
 font and style can be change here
+
+> cmd+shift+p
+script option : Command line'a usr/bin/python3 yazinca o run edecek

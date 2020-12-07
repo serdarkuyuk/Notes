@@ -26,6 +26,10 @@ where this environment is installed
 
 > pip3 install --upgrade pip
 
+## listing
+
+> pip3 list
+
 ## requirement
 
 > pip install -r requirements.txt
