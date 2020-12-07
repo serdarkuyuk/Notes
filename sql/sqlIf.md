@@ -110,3 +110,10 @@ GROUP BY sell_date
 # DATE_FORMAT
 
 > DATE_FORMAT(date,'%Y%m')
+
+# SUBSTR
+'2020-02'
+>substr(order_date, 6, 2) = 2
+
+# LEFT
+>Left(order_date, 7) = '2020-02'
