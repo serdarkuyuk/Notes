@@ -37,3 +37,12 @@ where this environment is installed
 ## freeze
 
 > pip freeze
+
+> pip freeze --local > requirements.txt
+
+## deleting virtual environment
+
+> rm -rf foldername/
+
+## specific environment
+virtualenv -p /usr/bin/python2.6 projectName
