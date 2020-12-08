@@ -20,8 +20,8 @@ autocomplete snippet and autocomplete plus
 * search for autocomplete-python and install kite too
 * file-icons - shows icon
 * Minimap - that shows a map on the right
-* python-autopep8 - format file in pep8
-* lintern-flake8 - for error handling
+* python-autopep8 - format file in pep8 (before pip install autopep8)
+* lintern-flake8 - for error handling (before pip install flake8)
 
 # Editor
 font and style can be change here
