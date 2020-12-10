@@ -22,3 +22,5 @@ copy the line
 cmd + u   copy if cursor is at the end
 cmd + k   copy if curser is the beginning
 ```
+# kill process (XCode)
+kill $(ps aux | grep 'Xcode' | awk '{print $2}')
