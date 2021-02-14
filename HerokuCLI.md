@@ -28,6 +28,11 @@ if __name__ == '__main__':
 
 > pip freeze > requirements.txt
 
+open a runtime.txt and define which python to use in heroku
+> touch runtime.txt
+> vim runtime.txt
+write python-3.9.0
+
 > git init
 
 > git add .

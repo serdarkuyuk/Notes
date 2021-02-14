@@ -4,21 +4,22 @@ class TreeNode:
         self.left = left
         self.right = right
 
-## constructing tree
-root=TreeNode(4, 2, 7)
-root.left=TreeNode(2, 1, 3)
+
+# constructing tree
+root = TreeNode(4, 2, 7)
+root.left = TreeNode(2, 1, 3)
 # equal = root.left=TreeNode(2, 1, 3)
 
-root.left.left=TreeNode(1)
-root.left.right=TreeNode(3)
-root.right=TreeNode(7, 6, 9)
-root.right.left=TreeNode(6)
-root.right.right=TreeNode(9)
-      #       4
-      #   2       7
-      # 1   3    6   9
+root.left.left = TreeNode(1)
+root.left.right = TreeNode(3)
+root.right = TreeNode(7, 6, 9)
+root.right.left = TreeNode(6)
+root.right.right = TreeNode(9)
+#       4
+#   2       7
+# 1   3    6   9
 # With recursion
-## in order
+# in order
 # def dfs(node: TreeNode):
 #     if not node:
 #         return
@@ -29,10 +30,12 @@ root.right.right=TreeNode(9)
 # dfs(root)
 
 
-
 def postorder(root):
-  return  postorder(root.left) + postorder(root.right) + [root.val] if root else []
+    return postorder(root.left) + postorder(root.right) + [root.val] if root else []
+
+
 print(postorder(root))
+
 
 def DFS(root):
     stack = []
@@ -46,11 +49,19 @@ def DFS(root):
             inorder.append(root.val)
             root = root.right
     return inorder
+
+
 print(DFS(root))
+
+
 def inorder(root):
     return inorder(root.left) + [root.val] + inorder(root.right) if root else []
+
+
 print(inorder(root))
 # Stack preorder
+
+
 def DFS(root):
     stack = []
     preorder = []
@@ -63,10 +74,15 @@ def DFS(root):
             root = stack.pop()
             root = root.right
     return preorder
+
+
 print(DFS(root))
+
 
 def preorder(root):
     return [root.val] + preorder(root.left) + preorder(root.right) if root else []
+
+
 print(preorder(root))
 
 '''

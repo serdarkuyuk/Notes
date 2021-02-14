@@ -28,3 +28,6 @@ font and style can be change here
 
 > cmd+shift+p
 script option : Command line'a usr/bin/python3 yazinca o run edecek
+
+> cmd+shift+k
+profile secki o calissin

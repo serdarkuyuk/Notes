@@ -46,3 +46,20 @@ where this environment is installed
 
 ## specific environment
 virtualenv -p /usr/bin/python2.6 projectName
+
+## uninstall all packets
+> pip freeze | xargs pip uninstall -y
+
+# Version run python
+goto website for specific version
+download and install manually
+
+Reference
+https://medium.com/swlh/how-to-run-a-different-version-of-python-from-your-terminal-fe744276ff22
+
+pip uninstall virtualenv
+ln -s /usr/bin/python3 /usr/local/bin/python37
+pip3 install virtualenv
+
+virtualenv venv -p python37
+source venv/bin/activate

@@ -117,3 +117,23 @@ WHERE invoice_id =(
         FROM client
         WHERE name = 'Myworks'
 )
+```
+
+```sql
+use mytestdb;
+drop table if exists country ;
+create table country(country_id int NOT NULL AUTO_INCREMENT primary key, country_name varchar(50), last_update datetime NOT NULL);
+```
+
+## Set local file readible
+show global variables like 'local_infile';
+set global local_infile=true;
+
+
+## set local file readabile
+Go to the MySQL Connections page.
+Right click the connection and click 'Edit connection'.
+Select 'Advanced' option. Paste the below line in the 'Others' box.
+OPT_LOCAL_INFILE=1
+Click 'Test Connection'. It will successfully update the connection.
+OPT_LOCAL_INFILE=1
