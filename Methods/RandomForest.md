@@ -4,6 +4,7 @@
 1. Scale in var, means units could be not uniform (scale) for features.
 2. Robust to irrelevant features. if a paramater is irrelevant, it will not be split on
 3. Interpratibility : follow chart...
+
 ## Cons of Decision Tree
 1. Overfit.
 
