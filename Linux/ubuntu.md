@@ -132,3 +132,9 @@ bash bourne again
 % C shell
 csh Cshell
 tesh Tenex
+
+# sudo
+
+sudo -s # to access root
+
+ls -lR  # recursively list files

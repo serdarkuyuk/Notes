@@ -63,3 +63,15 @@ pip3 install virtualenv
 
 virtualenv venv -p python37
 source venv/bin/activate
+
+
+# corey
+
+python3 -m venv customSpacy
+which python
+pip3 list
+
+install all system packages
+python3 -m venv venv --system-site-packages
+
+pip3 list --local #only local packages
