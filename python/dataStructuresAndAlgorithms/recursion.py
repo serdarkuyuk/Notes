@@ -62,4 +62,44 @@ def powerOfNumber(number, power):
         return number * powerOfNumber(number, power - 1)
 
 
-print(powerOfNumber(4, 1))
+# print(powerOfNumber(4, 1))
+
+
+def greatestCommonFactor(number1, number2):
+    assert (
+        int(number1) == number1 and int(number2) == number2
+    ), "The numbers must be integer only"
+    if number1 < 0:
+        number1 = -1 * number1
+    if number2 < 0:
+        number2 = -1 * number2
+    if number2 == 0:
+        return number1
+    else:
+        remainder = number1 % number2
+        return greatestCommonFactor(number2, remainder)
+
+
+# print(greatestCommonFactor(40, -2))
+
+
+def decimal2binary(n):
+    assert int(n) == n, "You should reconsider"
+    if n == 0:
+        return 0
+    else:
+        return 10 * decimal2binary(n // 2) + n % 2
+
+
+# print(decimal2binary(40))
+
+
+def findMaxNumber(arr):
+    # n = length(arr)
+    if len(arr) == 1:
+        return arr[0]
+    else:
+        return max(findMaxNumber(arr[1:]), arr[0])
+
+
+print(findMaxNumber([1, 2, 7, 5]))
