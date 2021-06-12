@@ -354,9 +354,9 @@ docker images
 docker run my-app:1.0
 when you make an edit in Dockerfile, we have to create another image
 
-docker ps -a | grep my-app
-docker rm ContainerID
-docker rmi ImageId
+docker ps -a | grep my-app <br>
+docker rm ContainerID \
+docker rmi ImageId \
 docker images
 
 docker run my-app:1.0
