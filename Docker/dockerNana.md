@@ -260,6 +260,8 @@ now change in node.js \
 var MongoClient = require('mongodb').MongoClient;
 
 to get method \
+
+```javascript
 app.get(....) {
 
 > MongoClient.connect('mongodb://admin:password@localhost:27017, function(err, client)){ \
@@ -278,6 +280,7 @@ to update method \
 app.post(){ \
 db.collections('users).updateOne(query, newValues, {upsert:true}, fucntion (err, res) ) \
 }
+```
 
 docker logs containerIdofMongo | tail \
 clear \
@@ -390,16 +393,16 @@ this give the registery ctl
 
 in local \
 
-1. AWS Cli needs to be installed \
-2. Credentials configured \
-   > $(aws escr......) \
+1. AWS Cli needs to be installed
+2. Credentials configured
+   > $(aws escr......)
 
 Image naming in Docker registeries
 
 registryDomain/imageName:tag \
 docker pull mongo:4.2 == docker pull docker.io/library/mongo:4.2 \
 docker tag my-app:latest 34530495.dkr.ecr..amazon.com/my-app:latest (rename image by tag) \
-docker push 34530495.dkr.ecr..amazon.com/my-app:latest \
+docker push 34530495.dkr.ecr..amazon.com/my-app:latest
 
 with name app \
 docker build -t my-app:1.1 \
@@ -413,7 +416,11 @@ docker push amazonName/my-app:1.1
 ```yaml
 version: '3' (version of docker-compose)'
 services:
-  mongodb: (container name)
+  my-app:
+    image: 34530495.dkr.ecr..amazon.com/my-app:latest (private repository)
+    ports:
+      - 3000:3000 host(amazon):container
+  mongodb:
     image: mongo
     ports:
       - 27017:27017 (host:container)
@@ -428,3 +435,121 @@ services:
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
 ```
+
+Docker-Copmose file would be used on the server to deploy all the applications/services
+
+docker login aws repository \
+vim mongo.yaml \
+copy and paste all yaml file in here. \
+docker-compose -f mongo.yaml up \
+this install all dependences however when created everything all db is started over, and we lost the data \
+
+**_Note_** \
+we change the localhost to services because they are in the network
+
+```javascript
+app.get(....) {
+
+previous MongoClient.connect('mongodb://admin:password@localhost:27017, function(err, client)){
+changed  MongoClient.connect('mongodb://admin:password@mongodb, function(err, client)){ \
+>  \
+
+    .... \
+    db = client.db('user-account'); \
+    query ={ userid: 1}; \
+    db.collection('users').findOne(query, function (err, result)){ (note user is collection) \
+        ... \
+        client.close() \
+    } \
+
+} \
+to update method \
+app.post(){ \
+db.collections('users).updateOne(query, newValues, {upsert:true}, fucntion (err, res) ) \
+}
+```
+
+## Docker Volumes
+
+This is for data persistence. Data is gone when restarting or removing the container \
+Host - Container has it's own file system like /var/lib/mysql/data \
+Folder in physical host file system is mounted into the virtual file system of Docker
+Container (var/lib/mysql/data) mounted to host (/home/mount/data)
+data gets automatically replicated
+
+3 Volume Types \
+**_Host Valumes_** \
+you decide where on the host file system the reference is made \
+docker run -v /home/mount/data:/var/lib/mysql/data \
+
+**_Anonymous Volumes_** \
+for each container a folder is generated that gets mounted \
+/var/lib/docker/volumes/random-hash/\_data (automatically created by Docker) \
+docker run -v /var/lib/mysql/data \
+
+**_Named Volumes_** \
+you can reference the volume by name \
+docker run -v name:/var/lib/mysql/data \
+should be used in production
+
+for docker-compose
+
+```yaml
+version: '3' (version of docker-compose)'
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017 (host:container)
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - etc
+    volumes:
+      - db-data: /var/lib/mysql/data
+
+volumes:
+  db-data
+```
+
+Example
+
+docker-compose -f docker-compose.yaml up \
+starts mongdb and express \ (adjust db name and collections)
+npm run start (starts the application)
+if I not use volume, I loose data
+
+```yaml
+version: '3' (version of docker-compose)'
+services:
+  my-app:
+    image: 34530495.dkr.ecr..amazon.com/my-app:latest (private repository)
+    ports:
+      - 3000:3000 host(amazon):container
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017 (host:container)
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - etc
+    volumes:
+      - mongo-data:/data/db      (1. Host-volume-name, 2. path-inside-of-the-container)
+(for mysql: var/lib/mysql, for postgres: var/lib/postgresql/data, this path differs for each database)
+This will copy local host database mongo-data to data/db when we restart the container
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8080:8080
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+
+volumes:
+  mongo-data:
+    driver: local
+```
+
+to check if /data/db exist \
+docker ps \
+docker exec -it ContainerId sh \
+ls \
+exit \
