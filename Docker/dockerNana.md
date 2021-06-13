@@ -553,3 +553,22 @@ docker ps \
 docker exec -it ContainerId sh \
 ls \
 exit \
+
+Example
+
+docker-compose -f docker-compose.yaml up \
+make adjustement and changes in db then \
+docker-compose -f docker-compose.yaml down
+docker-compose -f docker-compose.yaml up
+entry is persisted.
+
+### Docker Volume Locations
+
+Where the dockers volumes are located.. \
+for windows = C":\ProgramData\docker\volumes \
+for linux = /var/lib/docker/volumes \
+for macos = var/lib/docker/volumes \
+
+cfc1ab...ddf22/\_data hash and data
+
+note: docker for mac create a linux virtual machine and stores all the docker data here
