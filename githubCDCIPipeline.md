@@ -34,7 +34,7 @@ setup the pipeline is easy \
 tool for developers \
 it is compariable to jenkins
 
-Example Pipelines \
+Example Pipelines
 
 NodeJs - Build docker image - push to nexus repo - deploy to DigitalOcean Server
 
