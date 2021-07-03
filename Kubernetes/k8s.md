@@ -164,7 +164,7 @@ kubectl create deployment mongo-depl --image:mongo \
 kubectl get pod \
 kubectl logs nameOfPod \
 kubectl describe pod podName \
-kubectl get pod \
+kubectl get pod 
 
 kubectl exec -it podName -- bin/bash (inside of application, ls, pwd etc)
 
@@ -174,6 +174,8 @@ kubectl delete deployment mongo-depl \
 kubectl get pod \
 kubectl get replicaset \
 kubectl delete deployment nginx-depl
+
+#### apply
 
 kubectl apply - fileNameConfig.yaml \
 touch config.yaml
@@ -209,3 +211,40 @@ kubectl get pod \
 kubecty get deployment \
 K8s knows when to create or update deployment \
 (you can apply services volumes etc...)
+
+### Yaml configuration file in Kubernetes
+
+1. Metadata
+2. Specification (deployment, services will have different attributes)
+3. Status (automatically generated and added by Kubernetes) Kubernetes will always look at desired and actual states, if there is no match, K8s will make it happen. K8s updates its states constantly. etcd is cluster brain, it holds the current status of any K8s components
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment or kind: Service
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec: (for deployment)
+  replicas: 1
+  selector:
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec: (for pods)
+      containers:
+        - name: nginx (one container)
+          image: nginx:1.16
+          ports:
+            - containerPort: 80
+```
+
+store them in the application code. \
+Template has its own metadata and spec section. Specs will define port, image name etc..
+
+#### Connection components
+
+Between deployment and service via labels and Selectors \ 
+metadata contains labels, and spec contains selector
+ 

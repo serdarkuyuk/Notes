@@ -116,3 +116,92 @@ pipeline {
 ```
 
 ### Post attribute in Jenkinsfile
+
+```text
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage("build") {
+
+            steps {
+
+            }
+        }
+    }
+
+    // after everything executed
+    post {
+
+        always {
+            
+            // this execute nometter what, like sending email etc
+
+        }
+
+        success {
+             
+            // if the build is succeeded, this script will be executed
+
+        }
+
+        failure {
+
+            // build status or build status changes.. etc.
+
+        }
+
+    }
+}
+
+```
+
+### Define conditionals in each stage
+
+for example only run the test only dev branch
+```text
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage("checkout") {
+                configuration file...
+            steps {
+
+            }
+        }
+
+        stage("build") {
+
+            steps {
+                sh 'npm install'
+                sh 'npm install'
+                echo 'building the applicaiton'
+            }
+        }
+
+        stage("test") {
+
+            steps {
+                
+                when {
+                    expression {
+                        
+                    }
+                }
+            }
+        }
+
+        stage("deploy") {
+
+            steps {
+
+            }
+        }
+    }
+}
+```
